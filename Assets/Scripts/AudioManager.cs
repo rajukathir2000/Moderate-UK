@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
    // public SFX[] sfxsound;
     public AudioSource musicsource,sfxsource;
     public static AudioManager instance;
+
     
 
     private void Awake()
@@ -27,6 +28,7 @@ public class AudioManager : MonoBehaviour
         {
             musicsource.clip = sounds.musicClip;
             musicsource.Play();
+            
         }
     }
     //public void PlaySfx(string name)
