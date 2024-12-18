@@ -1,0 +1,2 @@
+unityTimeStamp,Event
+2024-12-17|23:52:47.328,New App Execution

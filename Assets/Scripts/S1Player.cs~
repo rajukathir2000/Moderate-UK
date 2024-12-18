@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class S1Player : MonoBehaviour
+{
+    AudioSource audioSource;
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("StartMarker"))
+        {
+            print("collided");
+            SceneManager.LoadScene(1);
+        }
+    }
+}

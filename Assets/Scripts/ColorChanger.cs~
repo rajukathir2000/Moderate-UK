@@ -1,0 +1,46 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ColorChanger : MonoBehaviour
+{
+    public Renderer targetRenderer; // Assign the Renderer with the material to change
+    public Button changeColorButton; // Assign the button to trigger color change
+    public Color startColor = Color.white; // Initial color
+    public Color endColor = Color.red; // Target color
+    public float duration = 2f; // Time to transition colors
+
+    private void Start()
+    {
+        if (changeColorButton != null)
+        {
+            changeColorButton.onClick.AddListener(StartColorChange);
+        }
+        if (targetRenderer != null)
+        {
+            targetRenderer.material.color = startColor; // Set the initial color
+        }
+    }
+
+    private void StartColorChange()
+    {
+        if (targetRenderer != null)
+        {
+            StartCoroutine(ChangeColorGradually());
+        }
+    }
+
+    private IEnumerator ChangeColorGradually()
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            targetRenderer.material.color = Color.Lerp(startColor, endColor, t);
+            yield return null; // Wait until the next frame
+        }
+
+        targetRenderer.material.color = endColor; // Ensure the color is fully set at the end
+    }
+}
